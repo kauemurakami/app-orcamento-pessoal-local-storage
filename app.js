@@ -55,11 +55,46 @@ class Bd {
 			}
 			
 		}
-		console.log(despesas)
 		return despesas
 	}
 	pesquisar(despesa){
-		console.log(despesa)
+		let despesasFiltradas = Array()
+		despesasFiltradas = this.carregarTodosRegistros()
+		console.log(despesasFiltradas)
+
+		//filtros
+		if (despesa.ano != '') {
+		//ano @param1 func que recebe o valor do indice no momento com um if ternario verificando se esta vazio
+			despesasFiltradas = despesasFiltradas.filter(d => d.ano == despesa.ano)//d = despesa
+		}
+
+		//mes
+		if (despesa.mes != '') {
+		//ano @param1 func que recebe o valor do indice no momento com um if ternario verificando se esta vazio
+			despesasFiltradas = despesasFiltradas.filter(d => d.mes == despesa.mes)//d = despesa
+		}
+
+		//dia
+		if (despesa.dia != '') {
+		//ano @param1 func que recebe o valor do indice no momento com um if ternario verificando se esta vazio
+			despesasFiltradas = despesasFiltradas.filter(d => d.dia == despesa.dia)//d = despesa
+		}
+		//tipo
+		if (despesa.tipo != '') {
+		//ano @param1 func que recebe o valor do indice no momento com um if ternario verificando se esta vazio
+			despesasFiltradas = despesasFiltradas.filter(d => d.tipo == despesa.tipo)//d = despesa
+		}
+		//descricao
+		if (despesa.descricao != '') {
+		//ano @param1 func que recebe o valor do indice no momento com um if ternario verificando se esta vazio
+			despesasFiltradas = despesasFiltradas.filter(d => d.descricao == despesa.descricao)//d = despesa
+		}
+		//valor
+		if (despesa.valor != '') {
+		//ano @param1 func que recebe o valor do indice no momento com um if ternario verificando se esta vazio
+			despesasFiltradas = despesasFiltradas.filter(d => d.valor == despesa.valor)//d = despesa
+		}
+		return despesasFiltradas
 	}
 
 }
@@ -115,12 +150,16 @@ function cadastrarDespesa() {
 	}
 }
 
-function carregaListaDespesas(){
-	let despesas = Array()
-	despesas = bd.carregarTodosRegistros()
+function carregaListaDespesas(despesas = Array()){
+	if (despesas.length == 0) {
+		despesas = bd.carregarTodosRegistros()
+	}else{
+
+	}
+
 	//recuperando o  elemento tbody da tabela
 	let listadespesas = document.getElementById('listaDespesas')
-
+	listadespesas.innerHTML = ''
 	//percorrer o array despesas lsitando as despesas de forma dinâmica
 	despesas.forEach(function(d){
 		console.log(d)
@@ -163,5 +202,7 @@ function pesquisarDespesa(){
 	let valor = document.getElementById('valor').value
 
 	let despesa = new Despesa(ano, mes, dia, tipo, descricao, valor)
-	bd.pesquisar(despesa)
+	let despesas = bd.pesquisar(despesa)
+
+	this.carregaListaDespesas(despesas)
 }
