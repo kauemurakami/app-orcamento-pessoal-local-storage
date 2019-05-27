@@ -81,8 +81,8 @@
         </div>
 
         <div class="col-md-6">
-          <select class="form-control" id="tipo">
-            <option value="">Tipo</option>
+          <select id="tipo" class="form-control">
+            <option value=" ">Tipo</option>
             <option value="1">Alimentação</option>
             <option value="2">Educação</option>
             <option value="3">Lazer</option>
@@ -108,6 +108,32 @@
         </div>
       </div>
     </div>
+<!-- Button trigger modal 
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#erroGravacao">
+  Launch demo modal
+</button>
+-->
+<!-- Modal -->
+
+<div class="modal fade" id="modalRegistroDespesa" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div id="modal_titulo_div">
+        <h5 class="modal-title" id="modal_titulo"></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="modal_conteudo">
+        Despesa cadastrada !
+      </div>
+      <div class="modal-footer">
+        <button id="modal_botao" type="button" data-dismiss="modal">Voltar</button>
+      </div>
+    </div>
+  </div>
+</div>    
+
   </body>	
 
 </html>
